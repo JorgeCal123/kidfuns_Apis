@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-n+)!v^#(0d%i1#!_)!k)o)p^skh6e!p-mz9l&x-age0j461s7i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['3.95.7.146','127.0.0.1']
+ALLOWED_HOSTS = ['44.204.57.239','127.0.0.1', '54.226.190.255']
 
 
 # Application definition
@@ -82,27 +82,27 @@ WSGI_APPLICATION = 'projectkind.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.mysql',
-#        'NAME': 'storage_kidfuns',
-#        'USER': 'root',
-#        'PASSWORD': '1234root',
-#        'HOST': 'storage-kidfuns.c2pwde3tvoew.us-east-1.rds.amazonaws.com',
-#        'PORT': '3306',
-#    }
-#}
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'kindb2',
+        'NAME': 'storage_kidfuns',
         'USER': 'root',
-       'PASSWORD': 'root',
-       'HOST': '127.0.0.1',
-       'PORT': '3306',
-
+        'PASSWORD': '1234root',
+        'HOST': 'storage-kidfuns.c2pwde3tvoew.us-east-1.rds.amazonaws.com',
+        'PORT': '3306',
     }
 }
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'kindb2',
+#        'USER': 'root',
+#       'PASSWORD': 'root',
+#       'HOST': '127.0.0.1',
+#       'PORT': '3306',
+
+#    }
+#}
 
 
 # Password validation
