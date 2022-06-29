@@ -1,3 +1,4 @@
+import string
 from django.db import models
 import uuid
 # models
@@ -23,7 +24,7 @@ class Level(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     type= models.IntegerField(blank=False)
     stage = models.IntegerField(blank=False)
-    id_kid = models.ForeignKey(Kid, related_name='id_kid', on_delete=models.CASCADE, blank=False)
+    kid = models.ForeignKey(Kid, related_name='kid_id',null=True, on_delete=models.CASCADE, blank=False)
 
 class Progres(models.Model):
     
@@ -33,4 +34,4 @@ class Progres(models.Model):
     score= models.DecimalField(decimal_places=1, max_digits=1)#representacion esta en cadena
     correct= models.IntegerField()
     fail= models.IntegerField()
-    id_level= models.ForeignKey(Level, related_name= 'id_level', on_delete=models.CASCADE)
+    level= models.ForeignKey(Level, related_name= 'level_id', null=True, on_delete=models.CASCADE)

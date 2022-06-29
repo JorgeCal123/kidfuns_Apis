@@ -38,6 +38,7 @@ class Registro_KidApiView(APIView):
         #serializer = UserSerializer(data = user_dic)
 
         #Validando datos
+        
         serializer = KidSerializer(data=request.data)
         if serializer.is_valid(raise_exception = True):
             validated_data = serializer.validated_data

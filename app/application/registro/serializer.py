@@ -27,13 +27,14 @@ class KidSerializer(serializers.ModelSerializer):
 class LevelSerializer(serializers.ModelSerializer):
     class Meta:
         model= Level
-        fields = ['id','type','stage','id_kid']
+        #fields = ['id','type','stage','id_kid']
+        fields ='__all__'
 
 class ProgresSerializer(serializers.ModelSerializer):
     class Meta:
         model:Progres
-        fiels = ['id','games','date','score','correct','fail','id_level']
-
+        #fiels = ['id','games','date','score','correct','fail','id_level']
+        fields ='__all__'
 #class UserListSerializer(serializers.ModelSerializer):
  #   class Meta:
   #      model = User
