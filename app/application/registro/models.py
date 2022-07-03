@@ -22,7 +22,6 @@ class Kid(models.Model):
 class Level(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    type= models.IntegerField(blank=False)
     stage = models.IntegerField(blank=False)
     kid = models.ForeignKey(Kid, related_name='kid_id',null=True, on_delete=models.CASCADE, blank=False)
 
@@ -31,7 +30,9 @@ class Progres(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     games= models.IntegerField()
     date= models.DateField(auto_now=True)
-    score= models.DecimalField(decimal_places=1, max_digits=1)#representacion esta en cadena
+    type= models.IntegerField(blank=False, null=True)
+    score= models.DecimalField(decimal_places=1, max_digits=2)#representacion esta en cadena
     correct= models.IntegerField()
     fail= models.IntegerField()
     level= models.ForeignKey(Level, related_name= 'level_id', null=True, on_delete=models.CASCADE)
+    kid = models.ForeignKey(Kid, related_name= 'kid_p_id', null=True, on_delete=models.CASCADE)
