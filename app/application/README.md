@@ -1,8 +1,8 @@
 #
 ***
 ##
-https://drive.google.com/drive/folders/1n6TZCo9uWb61Ltgg4tixh0iHafJG1pYK
 ###
+![logo_principal](https://user-images.githubusercontent.com/43484686/177639626-6ac7e346-3d7c-4274-8374-b3c56b9eea12.png)
 
 For Holberton School
 Cohort 16.
