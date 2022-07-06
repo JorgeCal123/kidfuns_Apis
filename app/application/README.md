@@ -45,7 +45,7 @@ IMAGENES DEL USO DE LA APP
 
 For the architecture of this project, the following distribution of technologies will be carried out to display the web page. The django Rest Framework will be used to perform the functional and react requirements for the views, which will simplify the management of the backend with django, making each part of the project take care of itself, and MYSQL will be used as a database to store all the information
 
-https://drive.google.com/drive/folders/1mj00hNVPydIxVCYnFcs5MN-8L2SsIDkA
+![architecture](https://user-images.githubusercontent.com/43484686/177641400-74f2fda6-1ae7-4c85-9b35-6c584b22998d.JPG)
 
 ## resources used with django
 
@@ -66,28 +66,15 @@ python3 -m pip install Pillow
 
 pip3 install django-cors-headers
 
-## React plugins
+## Mysql
 
-npm install --save styled-components
-npm install react-router-dom@6
-npm install --save react react-dom react-scripts
-npm i --save @fortawesome/fontawesome-svg-core
-npm i --save @fortawesome/free-solid-svg-icons
-npm i --save @fortawesome/free-regular-svg-icons
-npm i --save @fortawesome/react-fontawesome@latest
+sudo apt-get install libmysqlclient-dev
 
-npm i axios bootstrap --save --legacy-peer-deps
-npm i react-bootstrap-table-next --save --legacy-peer-deps
+sudo apt-get install libssl-dev
 
-npm install -g npm@8.12.2
+pip3 install mysqlclient
 
-npm i --save axios
-yarn add react-canvas-draw
-
-
-
-npm install react-hooks-global-state
-
+sudo apt-get install mysql-server
 
 
 ### Acknowledgments
@@ -99,7 +86,7 @@ npm install react-hooks-global-state
 
 ## We are three enthusiasts who are passionate about coding but also like to keep it fun!
 
- **Jorge Orlando Calambas Conda @jorgecal123** - [JorgeCalambas] -  java developer
+ **Jorge Orlando Calambas Conda @j.calambas@hotmail.com** - [JorgeCalambas] -  java developer
  **Daniel Ruiz @ruizdani301** - [DanielRuiz] - electronic technical engineer
- **Jhon Pulido - Electronic Engineer
+ **Jhon Jairo Pulido - Electronic Engineer
 
