@@ -19,6 +19,7 @@ class UserSerializer(serializers.ModelSerializer):
         #validate_password = make_password
         
 class KidSerializer(serializers.ModelSerializer):
+    pro = ProgresSerializer(many=True)
     class Meta:
         model = Kid
         #fields = ['name','age','avatar']
@@ -31,11 +32,18 @@ class LevelSerializer(serializers.ModelSerializer):
         fields ='__all__'
 
 class ProgresSerializer(serializers.ModelSerializer):
+    
     class Meta:
-        model:Progres
+        model = Progres
         #fiels = ['id','games','date','score','correct','fail','id_level']
         fields ='__all__'
 #class UserListSerializer(serializers.ModelSerializer):
  #   class Meta:
   #      model = User
    #     fields = '__all__'
+class KidSerializer(serializers.ModelSerializer):
+   # pro = ProgresSerializer(many=True)
+    class Meta:
+        model = Kid
+        #fields = ['name','age','avatar']
+        fields ='__all__' #todos los campos

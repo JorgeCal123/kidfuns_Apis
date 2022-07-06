@@ -24,7 +24,7 @@ class Registro_ProgresApiView(APIView):
 
     def get(self, request):
         progres = Progres.objects.all()
-        serializer = ProgresSerializer(Progres, many=True)
+        serializer = ProgresSerializer(progres, many=True)
         #json = JSONRenderer().render(serializer.data)
         return Response(serializer.data)
 

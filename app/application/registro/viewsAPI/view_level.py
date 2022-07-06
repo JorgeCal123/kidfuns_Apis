@@ -25,7 +25,7 @@ class Registro_LevelApiView(APIView):
 
     def get(self, request):
         level = Level.objects.all()
-        serializer = LevelSerializer(Level, many=True)
+        serializer = LevelSerializer(level, many=True)
         #json = JSONRenderer().render(serializer.data)
         return Response(serializer.data)
 

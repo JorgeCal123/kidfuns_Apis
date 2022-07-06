@@ -1,6 +1,4 @@
 #System
-
-from functools import partial
 import io
 
 from django.shortcuts import render, get_object_or_404

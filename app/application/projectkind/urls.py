@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from registro.viewsAPI import view_user, view_kid, view_level, view_progres, view_kids_profe
+from registro.viewsAPI import view_user, view_kid, view_level, view_progres, view_profe
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,9 +23,9 @@ urlpatterns = [
     path('user/<id>', view_user.Registro_UserDetailApiView.as_view(), name='userDetail'),
     path('kid/', view_kid.Registro_KidApiView.as_view(), name='kid'),
     path('kid/<id>',view_kid.Registro_KidDetailApiView.as_view(), name='kidDetail'),
-    path('kid/<id>',view_kids_profe.Kid_profesorApiView.as_view(), name='kidsdel'),
     path('level/', view_level.Registro_LevelApiView.as_view(), name='level'),
     path('level/<id>',view_level.Registro_LevelDetailApiView.as_view(), name='levelDetail'),
+    path('progres/profe', view_profe.Profe_ProgresApiView.as_view(), name='profe'),
     path('progres/', view_progres.Registro_ProgresApiView.as_view(), name='progres'),
     path('progres/<id>',view_progres.Registro_ProgresDetailApiView.as_view(), name='progresDetail'),
 ]
