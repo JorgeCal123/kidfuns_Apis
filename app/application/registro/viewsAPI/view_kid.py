@@ -1,36 +1,27 @@
-#System
-
-import io
-
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
 from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-#Django
-from rest_framework.renderers import JSONRenderer
-from rest_framework.parsers import JSONParser
-from django.db.models import Prefetch
-
-
-#Models 
 from registro.models import Kid
 
 
 #serializer
-from registro.serializer import UserSerializer, KidSerializer, LevelSerializer, ProgresSerializer
+from registro.serializer import KidSerializer
 
 class Registro_KidApiView(APIView):
-    #class kid register
+    """class kid register has all views for the Kid model"""
 
     def get(self, request):
+        """this function return all Kid objects """
         kid = Kid.objects.all()
         serializer = KidSerializer(kid, many=True)
         #json = JSONRenderer().render(serializer.data)
         return Response(serializer.data)
 
     def post(self, request):
+        """this function permit enter information into the database """
         #kid register dates from client
         #json = request
         #json_bytes = io.BytesIO(json)
@@ -50,21 +41,21 @@ class Registro_KidApiView(APIView):
 
 
 class Registro_KidDetailApiView(APIView):
-    #class to put or delete kid register
+    """this class permit put, patch and delete"""
     
     def get_object(self, id):
-        #validate if object exist
+        """this function permit to get a object by id"""
         kid = get_object_or_404(Kid, id=id)
         return(kid)
     
     def get(self, request, id):
-        #get a object by id
+        """this function permit to get a object by id"""
         kid = self.get_object(id)
         serializer = KidSerializer(kid)
         return Response(serializer.data)
     
     def put(self, request, id):
-        #update a object by id
+        """this function permit to replace a object """
         kid = self.get_object(id)
         serializer = KidSerializer(kid, data=request.data)
         if(serializer.is_valid()):
@@ -77,7 +68,7 @@ class Registro_KidDetailApiView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def patch(self, request, id):
-        """update a object by id"""
+        """this function permit to aply patch a object"""
         kid = self.get_object(id)
         serializer = KidSerializer(kid, data=request.data, partial=True)
         if(serializer.is_valid()):

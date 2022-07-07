@@ -1,35 +1,25 @@
-#System
-
-import io
-
-from django.shortcuts import render, get_object_or_404
-from django.http import Http404
+from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-#Django
-from rest_framework.renderers import JSONRenderer
-from rest_framework.parsers import JSONParser
-from django.db.models import Prefetch
-
-
-#Models 
 from registro.models import Level
 
-#serializer
+
 from registro.serializer import LevelSerializer
 
 class Registro_LevelApiView(APIView):
-    #class Level register
+    """class level register has the get and post method"""
 
     def get(self, request):
+        """function get obtein all the object of level"""
         level = Level.objects.all()
         serializer = LevelSerializer(Level, many=True)
         #json = JSONRenderer().render(serializer.data)
         return Response(serializer.data)
 
     def post(self, request):
+        """function post all the dates into the database"""
         #kid register dates from client
         #json = request
         #json_bytes = io.BytesIO(json)
@@ -48,7 +38,7 @@ class Registro_LevelApiView(APIView):
 
 
 class Registro_LevelDetailApiView(APIView):
-    #class to put or delete level register
+    """class contains to put or delete level register"""
     
     def get_object(self, id):
         """validate if object exist"""
@@ -71,7 +61,7 @@ class Registro_LevelDetailApiView(APIView):
             level.save(update_fields=['type','stage'])
             level = Level.objects.get(id=id)
             serializer_response = LevelSerializer(level)
-            return Response(serializer.data)#creo que es serialize_response
+            return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def patch(self, request, id):

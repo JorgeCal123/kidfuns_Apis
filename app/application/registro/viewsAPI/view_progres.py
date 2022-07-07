@@ -1,34 +1,25 @@
-#System
-import io
-
-from django.shortcuts import render, get_object_or_404
-from django.http import Http404
+from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-
-#Django
-from rest_framework.renderers import JSONRenderer
-from rest_framework.parsers import JSONParser
-from django.db.models import Prefetch
-
-
-#Models 
+ 
 from registro.models import Progres
 
-#serializer
 from registro.serializer import ProgresSerializer
 
+
 class Registro_ProgresApiView(APIView):
-    #class Progres register
+    """class Progres contains get, post"""
 
     def get(self, request):
+        """get all progres objetcs"""
         progres = Progres.objects.all()
-        serializer = ProgresSerializer(Progres, many=True)
+        serializer = ProgresSerializer(progres, many=True)
         #json = JSONRenderer().render(serializer.data)
         return Response(serializer.data)
 
     def post(self, request):
+        """add all element of the class"""
         #kid register dates from client
         #json = request
         #json_bytes = io.BytesIO(json)
@@ -40,7 +31,7 @@ class Registro_ProgresApiView(APIView):
         if serializer.is_valid(raise_exception = True):
             validated_data = serializer.validated_data
             progres = Progres(**validated_data)
-            progres.save() #al guardar yame crea la id
+            progres.save()
             serializer_response = ProgresSerializer(progres)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
@@ -70,7 +61,7 @@ class Registro_ProgresDetailApiView(APIView):
             progres.save(update_fields=['type','stage'])
             progres = Progres.objects.get(id=id)
             serializer_response = ProgresSerializer(progres)
-            return Response(serializer_response.data)#creo que es serialize_response
+            return Response(serializer_response.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def patch(self, request, id):
@@ -79,7 +70,7 @@ class Registro_ProgresDetailApiView(APIView):
         serializer = ProgresSerializer(progres, data=request.data, partial=True)
         if(serializer.is_valid()):
             serializer.save()
-            return Response(serializer.data)#creo que es serialize_response
+            return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     def delete(self,request,id):

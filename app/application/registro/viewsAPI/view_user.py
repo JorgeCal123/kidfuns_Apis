@@ -1,27 +1,18 @@
-#System
-
-from functools import partial
-import io
-
 from django.shortcuts import render, get_object_or_404
-from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-#Django
-from rest_framework.renderers import JSONRenderer
-from rest_framework.parsers import JSONParser
-from django.db.models import Prefetch
+#from rest_framework.renderers import JSONRenderer
+#from rest_framework.parsers import JSONParser
+#from django.db.models import Prefetch
 
-from django.contrib.auth.hashers import make_password
+#from django.contrib.auth.hashers import make_password
 
-#Models 
 from registro.models import User
 
-#serializer
 from registro.serializer import UserSerializer
-# Create your views here.
+
 class Registro_UserApiView(APIView):#ruta register
     """class registro"""
     
