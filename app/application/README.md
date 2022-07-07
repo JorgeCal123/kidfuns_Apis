@@ -41,6 +41,16 @@ Here is a little preview of our main feature, the swiping through the app:
 
 IMAGENES DEL USO DE LA APP
 
+
+![1](https://user-images.githubusercontent.com/43484686/177667507-4978b27e-318f-48b0-898b-b7b106ebc048.JPG)
+![2](https://user-images.githubusercontent.com/43484686/177667508-ec3dacb7-2371-4e29-bdba-e26d91bf103d.JPG)
+![3](https://user-images.githubusercontent.com/43484686/177667512-480981e8-c987-4cfa-9b7d-6b221d1f0363.JPG)
+![4](https://user-images.githubusercontent.com/43484686/177667513-9732bd21-8fbb-42ea-97b7-44df32bf3dc1.JPG)
+![5](https://user-images.githubusercontent.com/43484686/177667515-442d05e3-aa01-4d8a-a8d8-889d7822d1a2.JPG)
+![6](https://user-images.githubusercontent.com/43484686/177667516-676db84f-b10c-46e9-85a5-4220a14148ca.JPG)
+![8](https://user-images.githubusercontent.com/43484686/177667517-8d98f1ca-69e0-4d32-95e3-215603a72572.JPG)
+
+
 ### Architecture
 
 For the architecture of this project, the following distribution of technologies will be carried out to display the web page. The django Rest Framework will be used to perform the functional and react requirements for the views, which will simplify the management of the backend with django, making each part of the project take care of itself, and MYSQL will be used as a database to store all the information
