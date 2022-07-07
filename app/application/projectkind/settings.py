@@ -95,12 +95,12 @@ WSGI_APPLICATION = 'projectkind.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'kindb2',
+        'NAME': 'storage_kidfuns',
         'USER': 'root',
-       'PASSWORD': 'root',
-       'HOST': '127.0.0.1',
-       'PORT': '3306',
-
+        'PASSWORD': '1234',
+#        'HOST': '127.0.0.1',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 

@@ -43,7 +43,6 @@ class Registro_UserApiView(APIView):#ruta register
         if serializer.is_valid(raise_exception = True):
             validated_data = serializer.validated_data
             user = User(**validated_data)
-            user.password = make_password('password') 
             user.save() #al guardar yame crea la id
             serializer_response = UserSerializer(user)
             return Response(serializer_response.data, status=status.HTTP_201_CREATED)

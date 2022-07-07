@@ -23,6 +23,8 @@ class Level(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     stage = models.IntegerField(blank=False)
+    lvl = models.CharField(max_length=20, blank=False, null=True)
+    type= models.CharField(max_length=20, blank=False, null=True)
     kid = models.ForeignKey(Kid, related_name='kid_id',null=True, on_delete=models.CASCADE, blank=False)
 
 class Progres(models.Model):
