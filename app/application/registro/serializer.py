@@ -1,49 +1,33 @@
-#Django import
 from rest_framework import serializers
 
-#make password
-from django.contrib.auth.hashers import make_password
+from projectkind.utils import DynamicFieldsModelSerializer
+from registro.models import User, Kid, Level, Progress
 
-#Models
-from registro.models import User
-from registro.models import Kid
-from registro.models import Level
-from registro.models import Progres
 
-"""serializer class"""
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id','country','name','email','password']
-        #exclude = [password] excluye password
-        #validate_password = make_password
-        
-class KidSerializer(serializers.ModelSerializer):
-    pro = ProgresSerializer(many=True)
+        fields = ['id','country','name','email']
+                
+class KidSerializer(DynamicFieldsModelSerializer):
+    score = serializers.DecimalField(
+        source='progress.score', max_digits=2, decimal_places=1,
+        read_only=True)
+    fail = serializers.IntegerField(source='progress.fail', read_only=True)
+    correct = serializers.IntegerField(
+        source='progress.correct', read_only=True)
     class Meta:
         model = Kid
-        #fields = ['name','age','avatar']
-        fields ='__all__' #todos los campos
+        fields = ['name','age','avatar','score','fail','correct']
+
 
 class LevelSerializer(serializers.ModelSerializer):
     class Meta:
-        model= Level
-        #fields = ['id','type','stage','id_kid']
-        fields ='__all__'
+        model = Level
+        fields = '__all__'
 
-class ProgresSerializer(serializers.ModelSerializer):
-    
+
+class ProgressSerializer(DynamicFieldsModelSerializer):
     class Meta:
-        model = Progres
-        #fiels = ['id','games','date','score','correct','fail','id_level']
-        fields ='__all__'
-#class UserListSerializer(serializers.ModelSerializer):
- #   class Meta:
-  #      model = User
-   #     fields = '__all__'
-class KidSerializer(serializers.ModelSerializer):
-   # pro = ProgresSerializer(many=True)
-    class Meta:
-        model = Kid
-        #fields = ['name','age','avatar']
-        fields ='__all__' #todos los campos
+        model = Progress
+        fields = '__all__'

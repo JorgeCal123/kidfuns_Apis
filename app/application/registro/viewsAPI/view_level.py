@@ -1,28 +1,16 @@
 #System
-
-import io
-
-from django.shortcuts import render, get_object_or_404
-from django.http import Http404
+from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-#Django
-from rest_framework.renderers import JSONRenderer
-from rest_framework.parsers import JSONParser
-from django.db.models import Prefetch
-
-
-#Models 
 from registro.models import Level
 
 #serializer
 from registro.serializer import LevelSerializer
 
-class Registro_LevelApiView(APIView):
-    #class Level register
 
+class Registro_LevelApiView(APIView):
     def get(self, request):
         level = Level.objects.all()
         serializer = LevelSerializer(level, many=True)
@@ -43,13 +31,12 @@ class Registro_LevelApiView(APIView):
             level = Level(**validated_data)
             level.save() #al guardar yame crea la id
             serializer_response = LevelSerializer(level)
-            return Response(serializer_response.data, status=status.HTTP_201_CREATED)
+            return Response(
+                serializer_response.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
 
 
 class Registro_LevelDetailApiView(APIView):
-    #class to put or delete level register
-    
     def get_object(self, id):
         """validate if object exist"""
         level = get_object_or_404(Level, id=id)

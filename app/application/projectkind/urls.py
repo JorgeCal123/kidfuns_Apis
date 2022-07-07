@@ -25,7 +25,7 @@ urlpatterns = [
     path('kid/<id>',view_kid.Registro_KidDetailApiView.as_view(), name='kidDetail'),
     path('level/', view_level.Registro_LevelApiView.as_view(), name='level'),
     path('level/<id>',view_level.Registro_LevelDetailApiView.as_view(), name='levelDetail'),
-    path('progres/profe', view_profe.Profe_ProgresApiView.as_view(), name='profe'),
-    path('progres/', view_progres.Registro_ProgresApiView.as_view(), name='progres'),
-    path('progres/<id>',view_progres.Registro_ProgresDetailApiView.as_view(), name='progresDetail'),
+    path('progres/profe', view_profe.KidProgress.as_view({'get': 'list'}), name='profe'),
+    path('progres/', view_progres.Registro_ProgressApiView.as_view(), name='progres'),
+    path('progres/<id>',view_progres.Registro_ProgressDetailApiView.as_view(), name='progresDetail'),
 ]

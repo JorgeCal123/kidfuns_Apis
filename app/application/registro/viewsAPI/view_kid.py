@@ -1,25 +1,15 @@
 #System
 
-import io
-
-from django.shortcuts import render, get_object_or_404
-from django.http import Http404
+from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-#Django
-from rest_framework.renderers import JSONRenderer
-from rest_framework.parsers import JSONParser
-from django.db.models import Prefetch
-
-
-#Models 
 from registro.models import Kid
 
 
 #serializer
-from registro.serializer import UserSerializer, KidSerializer, LevelSerializer, ProgresSerializer
+from registro.serializer import KidSerializer
 
 class Registro_KidApiView(APIView):
     #class kid register
@@ -45,7 +35,8 @@ class Registro_KidApiView(APIView):
             kid = Kid(**validated_data)
             kid.save() #al guardar yame crea la id
             serializer_response = KidSerializer(kid)
-            return Response(serializer_response.data, status=status.HTTP_201_CREATED)
+            return Response(
+                serializer_response.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
 
 
