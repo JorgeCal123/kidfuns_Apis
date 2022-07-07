@@ -19,7 +19,7 @@ class Registro_ProgresApiView(APIView):
         return Response(serializer.data)
 
     def post(self, request):
-        """add all element of the class"""
+        """add all element of the class into database"""
         #kid register dates from client
         #json = request
         #json_bytes = io.BytesIO(json)
