@@ -3,18 +3,18 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
  
-from registro.models import Progres
+from registro.models import Progress
 
-from registro.serializer import ProgresSerializer
+from registro.serializer import ProgressSerializer
 
 
-class Registro_ProgresApiView(APIView):
-    """class Progres contains get, post"""
+class Registro_ProgressApiView(APIView):
+    """class Progress contains get, post"""
 
     def get(self, request):
-        """get all progres objetcs"""
-        progres = Progres.objects.all()
-        serializer = ProgresSerializer(progres, many=True)
+        """get all progress objetcs"""
+        progress = Progress.objects.all()
+        serializer = ProgressSerializer(progress, many=True)
         #json = JSONRenderer().render(serializer.data)
         return Response(serializer.data)
 
@@ -27,47 +27,47 @@ class Registro_ProgresApiView(APIView):
         #serializer = UserSerializer(data = user_dic)
 
         #Validando datos
-        serializer = ProgresSerializer(data=request.data)
+        serializer = ProgressSerializer(data=request.data)
         if serializer.is_valid(raise_exception = True):
             validated_data = serializer.validated_data
-            progres = Progres(**validated_data)
-            progres.save()
-            serializer_response = ProgresSerializer(progres)
+            progress = Progress(**validated_data)
+            progress.save()
+            serializer_response = ProgressSerializer(progress)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
 
 
-class Registro_ProgresDetailApiView(APIView):
+class Registro_ProgressDetailApiView(APIView):
     """class to put or delete level register"""
     
     def get_object(self, id):
         """validate if object exist"""
-        progres = get_object_or_404(Progres, id=id)
-        return(progres)
+        progress = get_object_or_404(Progress, id=id)
+        return(progress)
     
     def get(self, request, id):
         """get a object by id"""
-        progres = self.get_object(id)
-        serializer = ProgresSerializer(progres)
+        progress = self.get_object(id)
+        serializer = ProgressSerializer(progress)
         return Response(serializer.data)
     
     def put(self, request, id):
         """update a object by id"""
-        progres = self.get_object(id)
-        serializer = ProgresSerializer(Progres, data=request.data)
+        progress = self.get_object(id)
+        serializer = ProgressSerializer(Progress, data=request.data)
         if(serializer.is_valid()):
-            progres = Progres(**serializer.validated_data)
-            progres.id = id
-            progres.save(update_fields=['type','stage'])
-            progres = Progres.objects.get(id=id)
-            serializer_response = ProgresSerializer(progres)
+            progress = Progress(**serializer.validated_data)
+            progress.id = id
+            progress.save(update_fields=['type','stage'])
+            progress = Progress.objects.get(id=id)
+            serializer_response = ProgressSerializer(progress)
             return Response(serializer_response.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def patch(self, request, id):
         """update a object by id"""
-        progres = self.get_object(id)
-        serializer = ProgresSerializer(progres, data=request.data, partial=True)
+        progress = self.get_object(id)
+        serializer = ProgressSerializer(progress, data=request.data, partial=True)
         if(serializer.is_valid()):
             serializer.save()
             return Response(serializer.data)
@@ -75,6 +75,6 @@ class Registro_ProgresDetailApiView(APIView):
     
     def delete(self,request,id):
         """delete a object by id"""
-        progres = self.get_object(id)
-        progres.delete()
+        progress = self.get_object(id)
+        progress.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

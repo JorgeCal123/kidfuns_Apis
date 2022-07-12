@@ -4,7 +4,7 @@ from rest_framework import serializers
 from registro.models import User
 from registro.models import Kid
 from registro.models import Level
-from registro.models import Progres
+from registro.models import Progress
 
 """serializer class"""
 class UserSerializer(serializers.ModelSerializer):
@@ -28,9 +28,9 @@ class LevelSerializer(serializers.ModelSerializer):
         #fields = ['id','type','stage','id_kid']
         fields ='__all__'
 
-class ProgresSerializer(serializers.ModelSerializer):
-    """This class permit to serialize fields of the Progres model"""
+class ProgressSerializer(serializers.ModelSerializer):
+    """This class permit to serialize fields of the Progress model"""
     class Meta:
-        model = Progres
+        model = Progress
         #fiels = ['id','games','date','score','correct','fail','id_level']
         fields ='__all__'

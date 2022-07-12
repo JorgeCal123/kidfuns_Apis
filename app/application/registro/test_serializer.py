@@ -13,7 +13,7 @@ from tabulate import tabulate
 from registro.models import User
 from registro.models import Kid
 from registro.models import Level
-from registro.models import Progres
+from registro.models import Progress
 
 #serializer
 from registro.serializer import KidSerializer
