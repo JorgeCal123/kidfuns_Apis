@@ -28,7 +28,7 @@ class Registro_ProgressApiView(APIView):
             progress = Progress(**validated_data)
             progress.save() #al guardar yame crea la id
             serializer_response = ProgressSerializer(progress)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(serializer_response, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
 
 
@@ -55,7 +55,7 @@ class Registro_ProgressDetailApiView(APIView):
             progress.save(update_fields=['type','stage'])
             progress = Progress.objects.get(id=id)
             serializer_response = ProgressSerializer(progress)
-            return Response(serializer_response.data)
+            return Response(serializer_response)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def patch(self, request, id):
@@ -65,7 +65,7 @@ class Registro_ProgressDetailApiView(APIView):
             progress, data=request.data, partial=True)
         if(serializer.is_valid()):
             serializer.save()
-            return Response(serializer.data)
+            return Response(serializer)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     def delete(self,request,id):

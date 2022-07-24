@@ -41,6 +41,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'registro',
     "corsheaders",
+    #"rest_framework_simplejwt",
+    #'rest_framework.authtoken'
+    #'oauth2_provider',
+    #'social_django',
+    #'drf_social_oauth2',
 ]
 
 MIDDLEWARE = [
@@ -72,10 +77,27 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                #'social_django.context_processors.backends',
+                #'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
+
+#REST_FRAMEWORK = {
+#    'DEFAULT_AUTHENTICATION_CLASSES': [
+#        'rest_framework_simplejwt.authentication.JWTAuthentication',
+#    ],
+#   'FAULT_PERMISSION_CLASSES': (
+#        'rest_framework_permissions.IsAuthenticated',
+#    )
+#}
+
+#AUTHENTICATION_BACKENDS = (
+    
+#    'drf_social_oauth2.backends.DjangoOAuth2',
+#    'django.contrib.auth.backends.ModelBackend',
+#    )
 
 WSGI_APPLICATION = 'projectkind.wsgi.application'
 
@@ -95,7 +117,7 @@ WSGI_APPLICATION = 'projectkind.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'kindb2',
+        'NAME': 'kindb3',
         'USER': 'root',
        'PASSWORD': 'root',
        'HOST': '127.0.0.1',

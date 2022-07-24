@@ -6,7 +6,6 @@ from rest_framework import status
 
 from registro.models import Level
 
-#serializer
 from registro.serializer import LevelSerializer
 
 
@@ -31,8 +30,7 @@ class Registro_LevelApiView(APIView):
             level = Level(**validated_data)
             level.save() #al guardar yame crea la id
             serializer_response = LevelSerializer(level)
-            return Response(
-                serializer_response.data, status=status.HTTP_201_CREATED)
+            return Response(serializer_response, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
 
 
@@ -58,7 +56,7 @@ class Registro_LevelDetailApiView(APIView):
             level.save(update_fields=['type','stage'])
             level = Level.objects.get(id=id)
             serializer_response = LevelSerializer(level)
-            return Response(serializer.data)#creo que es serialize_response
+            return Response(serializer_response)#creo que es serialize_response
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def patch(self, request, id):
@@ -67,7 +65,7 @@ class Registro_LevelDetailApiView(APIView):
         serializer = LevelSerializer(level, data=request.data, partial=True)
         if(serializer.is_valid()):
             serializer.save()
-            return Response(serializer.data)#creo que es serialize_response
+            return Response(serializer)#creo que es serialize_response
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self,request,id):

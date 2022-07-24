@@ -10,6 +10,7 @@ from registro.serializer import UserSerializer
 class Registro_UserApiView(APIView):#ruta register
     """class registro"""
     
+    
     def get(self, request):
         user = User.objects.all()
         serializer = UserSerializer(user, many=True)
@@ -28,7 +29,8 @@ class Registro_UserApiView(APIView):#ruta register
         if serializer.is_valid(raise_exception = True):
             validated_data = serializer.validated_data
             user = User(**validated_data)
-            user.password = make_password('password') 
+            #user.password = make_password('password')
+            user.set_password(user.password) 
             user.save() #al guardar yame crea la id
             serializer_response = UserSerializer(user)
             return Response(

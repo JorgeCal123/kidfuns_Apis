@@ -7,15 +7,15 @@ from rest_framework import status
 
 from registro.models import Kid
 
-
-#serializer
 from registro.serializer import KidSerializer
 
 class Registro_KidApiView(APIView):
     #class kid register
 
     def get(self, request):
+        #kid = Kid.objects.all()
         kid = Kid.objects.all()
+        #kid = Kid.objects.all().values('name','avatar','progress__score').filter(progress__type=1)
         serializer = KidSerializer(kid, many=True)
         #json = JSONRenderer().render(serializer.data)
         return Response(serializer.data)
@@ -36,7 +36,7 @@ class Registro_KidApiView(APIView):
             kid.save() #al guardar yame crea la id
             serializer_response = KidSerializer(kid)
             return Response(
-                serializer_response.data, status=status.HTTP_201_CREATED)
+                serializer_response, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
 
 
@@ -64,7 +64,7 @@ class Registro_KidDetailApiView(APIView):
             kid.save(update_fields=['name','country','email'])
             kid = Kid.objects.get(id=id)
             serializer_response = KidSerializer(kid)
-            return Response(serializer.data)#creo que es serialize_response
+            return Response(serializer_response)#creo que es serialize_response
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def patch(self, request, id):
@@ -73,7 +73,7 @@ class Registro_KidDetailApiView(APIView):
         serializer = KidSerializer(kid, data=request.data, partial=True)
         if(serializer.is_valid()):
             serializer.save()
-            return Response(serializer.data)#creo que es serialize_response
+            return Response(serializer)#creo que es serialize_response
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self,request,id):
